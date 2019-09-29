@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_alignParentBottom="true"
+
+    android:background="?input_bg"
+    android:gravity="center_vertical"
+    android:orientation="vertical">
+
+    <include layout="@layout/layout_base_line" />
+
+    <RelativeLayout
+        android:id="@+id/chat_bottom_rl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="5dp">
+
+
+        <RelativeLayout
+            android:id="@+id/chat_bottom1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp">
+
+
+            <ImageView
+                android:id="@+id/chat_send_voice"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:scaleType="fitXY"
+                android:src="?chat_bottom_voice" />
+
+            <ImageView
+                android:id="@+id/chat_send_text"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:scaleType="fitXY"
+                android:src="?chat_bottom_send" />
+
+
+            <EditText
+                android:id="@+id/chat_input_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="55dp"
+                android:textCursorDrawable="@drawable/bg_edittext"
+                android:layout_toRightOf="@id/chat_send_voice"
+                android:background="#00000000"
+                android:gravity="center_vertical"
+                android:hint="请输入您的问题..."
+                android:maxLength="102"
+                android:maxLines="5"
+                android:minHeight="40dp"
+                android:paddingBottom="0dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="0dp"
+                android:paddingTop="0dp"
+                android:textColor="?inputColor"
+                android:textColorHint="?uninputColor"
+                android:textSize="14sp" />
+
+
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+
+        android:layout_below="@id/chat_bottom1"
+        android:background="?input_line_bg" />
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/chat_sound_layout"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:visibility="gone"
+        android:background="#f2f2f2">
+
+        <TextView
+            app:layout_constraintBottom_toTopOf="@id/tv_language"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:id="@+id/chat_speech_tv"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerInParent="true"
+            android:background="?chat_speech_unselect"
+            android:gravity="center"
+            android:text="按住说话"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/tv_language"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/chat_speech_tv"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:background="?language"
+            android:gravity="center"
+            android:padding="5dp"
+            android:singleLine="true"
+            android:textColor="?inputColor"
+            android:textSize="16sp" />
+    </android.support.constraint.ConstraintLayout>
+
+</LinearLayout>

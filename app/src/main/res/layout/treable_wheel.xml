@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.dmsj.newask.Views.MyScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:focusable="false"
+    android:orientation="vertical"
+    android:scrollbars="none">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@drawable/wheel_to_line">
+
+            <Button
+                android:id="@+id/wheel_cancel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="8dp"
+                android:background="@null"
+                style="?android:attr/borderlessButtonStyle"
+                android:visibility="gone"
+                android:singleLine="true"
+                android:text="取消"
+                android:textColor="?titleColor"
+                android:textSize="17sp" />
+
+            <Button
+                android:id="@+id/wheel_sure"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="8dp"
+                android:background="@null"
+                android:singleLine="true"
+                style="?android:attr/borderlessButtonStyle"
+                android:text="确定"
+                android:textColor="?titleColor"
+                android:textSize="17sp" />
+        </RelativeLayout>
+
+        <FrameLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:id="@+id/wheel_lay"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/white"
+                android:orientation="horizontal"
+                android:paddingBottom="2dp"
+                android:paddingTop="3dp">
+
+                <LinearLayout
+                    android:layout_width="50dp"
+                    android:layout_height="fill_parent"
+                    android:background="@null"></LinearLayout>
+
+                <com.dmsj.newask.Views.WheelView
+                    android:id="@+id/wheel_one"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="13dp"
+                    android:layout_marginTop="13dp"
+                    android:layout_weight="7.0"></com.dmsj.newask.Views.WheelView>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="年"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
+
+                <com.dmsj.newask.Views.WheelView
+                    android:id="@+id/wheel_two"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_marginBottom="13dp"
+                    android:layout_marginTop="13dp"
+                    android:layout_weight="7.0"></com.dmsj.newask.Views.WheelView>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="月"
+                    android:textColor="@color/black"
+
+                    android:textSize="16sp" />
+
+                <com.dmsj.newask.Views.WheelView
+                    android:id="@+id/wheel_three"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_marginBottom="13dp"
+                    android:layout_marginTop="13dp"
+                    android:layout_weight="7.0"></com.dmsj.newask.Views.WheelView>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="日"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
+
+                <LinearLayout
+                    android:layout_width="50dp"
+                    android:layout_height="fill_parent"
+                    android:background="@null"></LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/wheel_val"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:background="@drawable/wheel_val"
+                android:orientation="horizontal"></LinearLayout>
+        </FrameLayout>
+    </LinearLayout>
+</com.dmsj.newask.Views.MyScrollView>

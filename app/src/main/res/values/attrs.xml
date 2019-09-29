@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <declare-styleable name="IndicatorView">
+        <attr name="indicatorColor" format="color"/>
+        <attr name="indicatorColorSelected" format="color"/>
+        <attr name="indicatorWidth" format="integer"/>
+        <attr name="gravity" format="integer"/>
+    </declare-styleable>
+
+    <declare-styleable name="CircleImageView">
+        <attr name="border_width" format="dimension" />
+        <attr name="border_color" format="color" />
+    </declare-styleable>
+    <declare-styleable name="PullToRefresh">
+        <attr name="adapterViewBackground" format="reference|color" />
+        <attr name="headerBackground" format="reference|color" />
+        <attr name="headerTextColor" format="color" />
+        <attr name="mode">
+            <flag name="pullDownFromTop" value="0x1" />
+            <flag name="pullUpFromBottom" value="0x2" />
+            <flag name="both" value="0x3" />
+        </attr>
+        <attr name="headerType">
+            <flag name="input" value="0x1" />
+            <flag name="progressBar" value="0x2" />
+            <flag name="normal" value="0x3" />
+            <flag name="more" value="0x4" />
+            <flag name="different" value="0x5" />
+        </attr>
+
+        <!-- A drawable to use as the background of the Refreshable View -->
+        <attr name="ptrRefreshableViewBackground" format="reference|color" />
+
+        <!-- A drawable to use as the background of the Header and Footer Loading Views -->
+        <attr name="ptrHeaderBackground" format="reference|color" />
+
+        <!-- Text Color of the Header and Footer Loading Views -->
+        <attr name="ptrHeaderTextColor" format="reference|color" />
+
+        <!-- Text Color of the Header and Footer Loading Views Sub Header -->
+        <attr name="ptrHeaderSubTextColor" format="reference|color" />
+
+        <!-- Mode of Pull-to-Refresh that should be used -->
+        <attr name="ptrMode">
+            <flag name="disabled" value="0x0" />
+            <flag name="pullFromStart" value="0x1" />
+            <flag name="pullFromEnd" value="0x2" />
+            <flag name="both" value="0x3" />
+            <flag name="manualOnly" value="0x4" />
+
+            <!-- These last two are depreacted -->
+            <flag name="pullDownFromTop" value="0x1" />
+            <flag name="pullUpFromBottom" value="0x2" />
+        </attr>
+
+        <!-- Whether the Indicator overlay(s) should be used -->
+        <attr name="ptrShowIndicator" format="reference|boolean" />
+
+        <!-- Drawable to use as Loading Indicator. Changes both Header and Footer. -->
+        <attr name="ptrDrawable" format="reference" />
+
+        <!-- Drawable to use as Loading Indicator in the Header View. Overrides value set in ptrDrawable. -->
+        <attr name="ptrDrawableStart" format="reference" />
+
+        <!-- Drawable to use as Loading Indicator in the Footer View. Overrides value set in ptrDrawable. -->
+        <attr name="ptrDrawableEnd" format="reference" />
+
+        <!-- Whether Android's built-in Over Scroll should be utilised for Pull-to-Refresh. -->
+        <attr name="ptrOverScroll" format="reference|boolean" />
+
+        <!-- Base text color, typeface, size, and style for Header and Footer Loading Views -->
+        <attr name="ptrHeaderTextAppearance" format="reference" />
+
+        <!-- Base text color, typeface, size, and style for Header and Footer Loading Views Sub Header -->
+        <attr name="ptrSubHeaderTextAppearance" format="reference" />
+
+        <!-- Style of Animation should be used displayed when pulling. -->
+        <attr name="ptrAnimationStyle">
+            <flag name="rotate" value="0x0" />
+            <flag name="flip" value="0x1" />
+        </attr>
+
+        <!-- Whether the user can scroll while the View is Refreshing -->
+        <attr name="ptrScrollingWhileRefreshingEnabled" format="reference|boolean" />
+
+        <!--
+        	Whether PullToRefreshListView has it's extras enabled. This allows the user to be
+        	able to scroll while refreshing, and behaves better. It acheives this by adding
+        	Header and/or Footer Views to the ListView.
+        -->
+        <attr name="ptrListViewExtrasEnabled" format="reference|boolean" />
+
+        <!--
+        	Whether the Drawable should be continually rotated as you pull. This only
+        	takes effect when using the 'Rotate' Animation Style.
+        -->
+        <attr name="ptrRotateDrawableWhilePulling" format="reference|boolean" />
+
+        <!-- BELOW HERE ARE DEPRECEATED. DO NOT USE. -->
+        <attr name="ptrAdapterViewBackground" format="reference|color" />
+        <attr name="ptrDrawableTop" format="reference" />
+        <attr name="ptrDrawableBottom" format="reference" />
+
+    </declare-styleable>
+
+
+    <declare-styleable name="RippleLayout">
+        <attr name="color_s" format="color" />
+        <attr name="strokeWidth_s" format="dimension" />
+        <attr name="radius_s" format="dimension" />
+        <attr name="duration_s" format="integer" />
+        <attr name="rippleNums_s" format="integer" />
+        <attr name="scale_s" format="float" />
+    </declare-styleable>
+    <declare-styleable name="mytheme">
+        <attr name="rip_bg" format="reference" />
+        <attr name="titleColor" format="color" />
+        <attr name="inputColor" format="color" />
+        <attr name="input_bg" format="color" />
+        <attr name="chat_bottom_voice" format="reference" />
+        <attr name="chat_bottom_send" format="reference" />
+        <attr name="uninputColor" format="color" />
+        <attr name="input_line_bg" format="color" />
+        <attr name="chat_speech_select" format="reference" />
+        <attr name="chat_speech_unselect" format="reference" />
+        <attr name="rip_icon_center" format="reference" />
+        <attr name="diandiandian" format="reference" />
+        <attr name="item_chat_l_light_bg" format="reference" />
+        <attr name="item_chat_r_bg" format="reference" />
+        <attr name="btn_bg" format="reference" />
+        <attr name="btn_down" format="reference" />
+        <attr name="btn_middle" format="reference" />
+        <attr name="item_chat_l_dark_bg" format="reference" />
+        <attr name="check_box_duomei" format="reference" />
+        <attr name="set_btn_bg_message" format="reference" />
+        <attr name="check_box_fuck" format="reference" />
+        <attr name="check_box_more" format="reference" />
+        <attr name="check_box_more_text" format="reference" />
+        <attr name="language" format="reference" />
+        <attr name="doctor_card" format="reference" />
+        <attr name="doctor_card_bg" format="reference" />
+        <attr name="doctor_cardp_bg" format="reference" />
+    </declare-styleable>
+</resources>

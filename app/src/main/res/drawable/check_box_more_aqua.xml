@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@drawable/doctor_cardp_bg_aqua" android:state_checked="true"></item>
+    <item android:drawable="@drawable/doctor_card_bg_aqua" android:state_checked="false"></item>
+    <!--不可点击时-->
+    <item android:drawable="@drawable/doctor_card_bg_gray" android:state_enabled="false"></item>
+    <!--可以点击时-->
+    <!--    <item android:state_enabled="true">-->
+    <!--               -->
+    <!--        <shape>-->
+    <!--                       -->
+    <!--            <corners android:radius="15dp" />-->
+    <!--                       -->
+    <!--            <solid android:color="@color/colorAccent" />-->
+    <!--                   -->
+    <!--        </shape>-->
+    <!--           -->
+    <!--    </item>-->
+</selector>

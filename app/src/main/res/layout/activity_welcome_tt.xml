@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#c0a05d">
+    <ImageView
+        android:layout_width="160dp"
+        android:src="@drawable/welcome_src_tt"
+        android:layout_centerInParent="true"
+        android:scaleType="fitCenter"
+        android:layout_height="340dp"
+        android:paddingBottom="140dp"
+        />
+
+
+</RelativeLayout>
