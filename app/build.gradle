@@ -1,8 +1,9 @@
-//apply plugin: 'com.android.library'
-apply plugin: 'com.android.application'
+apply plugin: 'com.android.library'
+//apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 27
+    // 常浩修改了一次
     useLibrary 'org.apache.http.legacy'
     aaptOptions.cruncherEnabled = false
     aaptOptions.useNewCruncher = false
@@ -49,8 +50,8 @@ dependencies {
     implementation files('libs/xSocket-2.8.15.jar')
     implementation 'de.greenrobot:eventbus:2.4.0'
     implementation 'com.android.support:recyclerview-v7:27.0.0'
-    implementation 'com.wihaohao:PageGridView:1.2.1'
-    implementation 'com.github.xiaohaibin:PageMenuLayout:0.3.0'//将latestVersion替换成上面 jitpack 后面的版本号
+//    implementation 'com.wihaohao:PageGridView:1.2.1'
+//    implementation 'com.github.xiaohaibin:PageMenuLayout:0.3.0'//将latestVersion替换成上面 jitpack 后面的版本号
 
 }
 //解决v包冲突

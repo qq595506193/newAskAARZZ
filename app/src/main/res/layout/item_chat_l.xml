@@ -19,6 +19,7 @@
         <TextView
             android:id="@+id/chat_time"
             style="@style/chat_time"
+            android:textColor="@color/textcolor_gray"
             android:layout_centerHorizontal="true" />
 
         <ImageView
@@ -103,7 +104,7 @@
                         android:paddingLeft="@dimen/margin_10"
                         android:paddingRight="@dimen/margin_10"
                         android:paddingTop="3dp"
-                        android:textColor="?inputColor"
+                        android:textColor="?inputColor_black"
                         android:textSize="16sp"
 
                         />

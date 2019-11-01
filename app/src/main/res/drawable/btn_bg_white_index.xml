@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="oval">
+    <!-- 填充颜色 -->
+    <solid android:color="#e1e1e1"></solid>
+    <!-- 线的宽度，颜色灰色 --><!-- 矩形的圆角半径 -->
+
+    <size
+        android:width="@dimen/dp_2"
+        android:height="@dimen/dp_2" />
+
+    <padding
+    android:left="3dp"
+    android:top="3dp"
+    android:right="3dp"
+    android:bottom="3dp" />
+
+
+</shape>

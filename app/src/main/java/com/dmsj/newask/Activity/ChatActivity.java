@@ -22,7 +22,9 @@ import android.text.TextUtils;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
+import android.view.WindowManager;
 import android.view.animation.AnticipateOvershootInterpolator;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AbsListView;
 import android.widget.Button;
 import android.widget.EditText;
@@ -207,7 +209,7 @@ public class ChatActivity extends FragmentActivity implements View.OnClickListen
                 list.add(MessageBtn.addbtn(jsbbtn.optString("id"), SystemUtils.getHtmlChange(jsbbtn.optString("cont")), jsbbtn.optString("Option_Color"), jsbbtn.optString("Option_Confirm")));
             }
 
-            mChatAapter.onDataChange(MessageInfo.addReceiveList(SystemUtils.getHtmlChange(jsb.optString("cont")), list, message_time, chongxin_shuru, send_code, isSystemMessage), isAdd, isUP, isFinish, false);
+            mChatAapter.onDataChange(MessageInfo.addReceiveList(SystemUtils.getHtmlChange(jsb.optString("cont")), jsb.optInt("btn_align"), list, message_time, chongxin_shuru, send_code, isSystemMessage), isAdd, isUP, isFinish, false);
         }
         //////4.19
         else if (jsb.toString().contains("doctors")) {
@@ -292,6 +294,13 @@ public class ChatActivity extends FragmentActivity implements View.OnClickListen
 
     // 横向滚动
     public void setMore(final List<CheckMoreInfo> list) {
+        for (int i = 0; i < list.size(); i++) {
+            if (i == 0) {
+                list.get(i).setIsSelect(0);
+            } else {
+                list.get(i).setIsSelect(1);
+            }
+        }
         if (ll_more.getChildCount() != 0) {
             return;
         }
@@ -304,7 +313,7 @@ public class ChatActivity extends FragmentActivity implements View.OnClickListen
         // 获取底部指针控件
         page_indicator = chGroup.findViewById(R.id.page_indicator);
         // 设置列表布局
-        horizontalPageLayoutManager = new HorizontalPageLayoutManager(3, 4);
+        horizontalPageLayoutManager = new HorizontalPageLayoutManager(3, 3);
         pagingItemDecoration = new PagingItemDecoration(this, horizontalPageLayoutManager);
         layoutManager = horizontalPageLayoutManager;
         itemDecoration = pagingItemDecoration;
@@ -650,6 +659,9 @@ public class ChatActivity extends FragmentActivity implements View.OnClickListen
         SystemUtils.setWindowStatusBarColor(this, R.attr.titleColor);
 
         setContentView(R.layout.activity_chat);
+        //getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE |
+                WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
         HApplication hApplication = new HApplication();
         hApplication.init(this);
         LoginHttp.getLoginHttp().setLoginId("");
@@ -751,7 +763,6 @@ public class ChatActivity extends FragmentActivity implements View.OnClickListen
         chat_speech_tv.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-
                 int action = event.getAction();
                 switch (action) {
                     case MotionEvent.ACTION_DOWN:
@@ -861,6 +872,7 @@ public class ChatActivity extends FragmentActivity implements View.OnClickListen
         } else if (v.getId() == R.id.chat_send_voice) {
             changeSound();
         } else if (v.getId() == R.id.chat_input_text) {
+
             hideSound();
             mListView.setSelection(mListView.getAdapter().getCount() - 1);
 
@@ -868,8 +880,8 @@ public class ChatActivity extends FragmentActivity implements View.OnClickListen
             String str = chat_input_text.getEditableText().toString().trim();
             chat_input_text.setText(null);
             if (TextUtils.isEmpty(str)) return;
-
             onMessageSend(str);
+            hideInput();// 发送后隐藏软键盘
         } else if (v.getId() == R.id.theme_change) {
             startActivity(new Intent(ChatActivity.this, ThemeChangeActivity.class));
 
@@ -902,6 +914,17 @@ public class ChatActivity extends FragmentActivity implements View.OnClickListen
         }
 
 
+    }
+
+    /**
+     * 隐藏键盘
+     */
+    protected void hideInput() {
+        InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+        View v = getWindow().peekDecorView();
+        if (null != v) {
+            imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
+        }
     }
 
 
@@ -1436,7 +1459,7 @@ public class ChatActivity extends FragmentActivity implements View.OnClickListen
                         JSONObject jsb = jsonArray.getJSONObject(i);
                         if (jsb.optString("sender_Flag").equals("1")) {
                             MessageInfo info = MessageInfo.addSendMessage(jsb.optString("content"), jsb.optString("message_id"), TimeUtil.getMesgTime(jsb.optString("message_time")));
-                            mChatAapter.onDataChange(info, true, false, i == jsonArray.length() - 1 ? true : false, true);
+                            mChatAapter.onDataChange(info, true, false, i == jsonArray.length() - 1 ? true : false, false);
                             continue;
                         }
                         JSONArray jsonArrayC = new JSONArray(jsb.getString("content"));

@@ -14,17 +14,18 @@
     <!--默认-->
     <color name="title_color_green">#ff32b9aa</color>
     <color name="input_color_green">#ff32b9aa</color>
-    <color name="uninput_color_green">#ff32b9aa</color>
+    <color name="uninput_color_green">#238E23</color>
     <color name="input_line_green">#ff32b9aa</color>
     <color name="input_bg_green">#ffeffbfa</color>
-
-
-
+    <color name="input_bg_white">#fff</color>
     <!--浅绿色-->
 
     <color name="title_color_aqua">#ff62bc51</color>
-    <color name="input_color_aqua">#ff59b060</color>
-    <color name="uninput_color_aqua">#ff8dd592</color>
+    <!--    <color name="input_color_aqua">#ff59b060</color>-->
+    <color name="input_color_aqua">#000</color>
+    <color name="input_color_line">#cccccc</color>
+    <color name="input_color_checkbox">#353f55</color>
+    <color name="uninput_color_aqua">#238E23</color>
     <color name="input_line_aqua">#ffb8ecb3</color>
     <color name="input_bg_aqua">#ffdffbdc</color>
 </resources>

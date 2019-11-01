@@ -36,6 +36,15 @@ public class MessageInfo {
     private boolean isSystemMessage = false;
     public List<View> viewlist;
     private boolean isHis = false;
+    private int btn_align;
+
+    public int getBtn_align() {
+        return btn_align;
+    }
+
+    public void setBtn_align(int btn_align) {
+        this.btn_align = btn_align;
+    }
 
     public boolean isHis() {
         return isHis;
@@ -174,10 +183,11 @@ public class MessageInfo {
         return messageInfo;
     }
 
-    public static MessageInfo addReceiveList(String message, List<MessageBtn> list, long time, String chongxin_shuru, String send_code, boolean isSystemMessage) {
+    public static MessageInfo addReceiveList(String message, int btn_align, List<MessageBtn> list, long time, String chongxin_shuru, String send_code, boolean isSystemMessage) {
         MessageInfo messageInfo = new MessageInfo();
         messageInfo.setIsSend(false);
         messageInfo.setType(MessageInfo.BTN);
+        messageInfo.setBtn_align(btn_align);
         messageInfo.setMessage(message);
         messageInfo.setList(list);
         messageInfo.setTime(time);

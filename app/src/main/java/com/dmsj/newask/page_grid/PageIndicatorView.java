@@ -6,6 +6,7 @@ import android.view.Gravity;
 import android.view.View;
 import android.widget.LinearLayout;
 
+import com.dmsj.newask.R;
 import com.dmsj.newask.utils.DimensionConvert;
 
 import java.util.ArrayList;
@@ -65,12 +66,12 @@ public class PageIndicatorView extends LinearLayout {
         params.setMargins(margins, margins, margins, margins);
         for (int i = 0; i < count; i++) {
             view = new View(mContext);
-            view.setBackgroundResource(android.R.drawable.presence_invisible);
+            view.setBackgroundResource(R.drawable.btn_bg_white_index);
             addView(view, params);
             indicatorViews.add(view);
         }
         if (indicatorViews.size() > 0) {
-            indicatorViews.get(0).setBackgroundResource(android.R.drawable.presence_online);
+            indicatorViews.get(0).setBackgroundResource(R.drawable.btn_bg_gray_index);
         }
     }
 
@@ -82,9 +83,9 @@ public class PageIndicatorView extends LinearLayout {
     public void setSelectedPage(int selected) {
         for (int i = 0; i < indicatorViews.size(); i++) {
             if (i == selected) {
-                indicatorViews.get(i).setBackgroundResource(android.R.drawable.presence_online);
+                indicatorViews.get(i).setBackgroundResource(R.drawable.btn_bg_gray_index);
             } else {
-                indicatorViews.get(i).setBackgroundResource(android.R.drawable.presence_invisible);
+                indicatorViews.get(i).setBackgroundResource(R.drawable.btn_bg_white_index);
             }
         }
     }

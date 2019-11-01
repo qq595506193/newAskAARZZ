@@ -1,23 +1,25 @@
 package com.dmsj.newask.Info;
 
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-
-import com.wihaohao.PageGridView;
 
 /**
  * Created by x_wind on 18/4/17.
  */
-public class CheckMoreInfo implements PageGridView.ItemModel {
+public class CheckMoreInfo {
     public static final String singlebtn = "1", doublebtn = "2";
     boolean isCheck = false;
     String message;
     String color;
     String singleDouble = doublebtn;
+    private int isSelect;
+
+    public int getIsSelect() {
+        return isSelect;
+    }
+
+    public void setIsSelect(int isSelect) {
+        this.isSelect = isSelect;
+    }
 
     public void setIsCheck(boolean isCheck) {
         this.isCheck = isCheck;
@@ -63,25 +65,7 @@ public class CheckMoreInfo implements PageGridView.ItemModel {
         this.message = message;
     }
 
-    @Override
-    public String getItemName() {
-        return null;
-    }
 
-    @Override
-    public void setIcon(ImageView imageView) {
-
-    }
-
-    @Override
-    public void setItemView(View itemView) {
-        CheckBox ck_index = (CheckBox) itemView;
-        //ck_index.setText(message);
-        //ck_index.setSelected(true);
-        //checkBox.setChecked(mdInfo.isCheck());
-        setCheckboxListener.checkBoxListener(ck_index);
-
-    }
 
     private SetCheckboxListener setCheckboxListener;
 

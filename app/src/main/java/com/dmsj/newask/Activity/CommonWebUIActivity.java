@@ -10,6 +10,8 @@ import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.view.ViewParent;
 import android.view.Window;
 import android.view.WindowManager;
 import android.webkit.GeolocationPermissions.Callback;
@@ -22,8 +24,6 @@ import android.widget.ImageView;
 
 import com.dmsj.newask.R;
 import com.dmsj.newask.http.HttpRestClient;
-
-import org.json.JSONObject;
 
 /**
  * web页面
@@ -119,9 +119,11 @@ public class CommonWebUIActivity extends Activity implements OnClickListener {
                 return false;
             }
         });
-        String url = "http://157.122.68.20/XiaoYiRobotSer/app_help.html";
+        String url = "http://sfai.sysucc.org.cn/XiaoYiRobotSer/app_help.html";
         if (!url.startsWith("http")) url = "http://" + url;
-        mWebView.loadUrl(url, HttpRestClient.getDefaultHeaders());
+        final String finalUrl = url;
+        mWebView.loadUrl(finalUrl, HttpRestClient.getDefaultHeaders());
+
         mWebView.setOnKeyListener(new View.OnKeyListener() {
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {
@@ -139,13 +141,39 @@ public class CommonWebUIActivity extends Activity implements OnClickListener {
 
     }
 
+//    @Override
+//    protected void onDestroy() {
+//        if (mWebView != null) {
+//            mWebView.setVisibility(View.GONE);
+//        }
+//        super.onDestroy();
+//        mWebView.removeAllViews();
+//        mWebView.destroy();
+//    }
+
+
     @Override
     protected void onDestroy() {
-        super.onDestroy();
-        mWebView.removeAllViews();
-        mWebView.destroy();
-    }
+        if (mWebView != null) {
 
+            // 如果先调用destroy()方法，则会命中if (isDestroyed()) return;这一行代码，需要先onDetachedFromWindow()，再
+            // destory()
+            ViewParent parent = mWebView.getParent();
+            if (parent != null) {
+                ((ViewGroup) parent).removeView(mWebView);
+            }
+            mWebView.loadDataWithBaseURL(null, "", "text/html", "utf-8", null);
+            mWebView.stopLoading();
+            // 退出时调用此方法，移除绑定的服务，否则某些特定系统会报错
+            mWebView.getSettings().setJavaScriptEnabled(false);
+            mWebView.clearHistory();
+            mWebView.clearView();
+            mWebView.removeAllViews();
+            mWebView.destroy();
+            mWebView = null;
+        }
+        super.onDestroy();
+    }
 
     // 重写onKeyDown
     public boolean onKeyDown(int keyCode, KeyEvent event) {

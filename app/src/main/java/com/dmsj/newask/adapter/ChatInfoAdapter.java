@@ -10,6 +10,8 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.text.Html;
 import android.text.TextUtils;
 import android.text.method.LinkMovementMethod;
@@ -31,6 +33,7 @@ import android.widget.TextView;
 import com.dmsj.newask.Activity.ChatActivity;
 import com.dmsj.newask.Activity.CountActivity;
 import com.dmsj.newask.Activity.DoctorMessageActivity;
+import com.dmsj.newask.HApplication;
 import com.dmsj.newask.Info.CheckMoreInfo;
 import com.dmsj.newask.Info.MessageBtn;
 import com.dmsj.newask.Info.MessageDoctorInfo;
@@ -399,55 +402,62 @@ public class ChatInfoAdapter extends BaseAdapter {
 
                     vh.contentTextV.setText(Html.fromHtml(info.getMessage()));
                     View btnGroup;
-                    Button button;
-                    for (int i = 0; i < info.getList().size(); i++) {
-                        btnGroup = mInflater.inflate(R.layout.layout_item_btn_single, null);
+                    //Button button;
+//                        btnGroup = mInflater.inflate(R.layout.layout_item_btn_single, null);
+                        btnGroup = mInflater.inflate(R.layout.layout_item_btn_single_02, null);
                         vh.mViewGroup.addView(btnGroup);
-                        button = (Button) btnGroup.findViewById(R.id.btn);
-
-                        final MessageBtn btn = info.getList().get(i);
-                        if (!TextUtils.isEmpty(btn.getColor())) {
-
-                            button.setTextColor(Color.parseColor("#" + btn.getColor()));
+                        //button = (Button) btnGroup.findViewById(R.id.btn);
+                        RecyclerView rv_button = btnGroup.findViewById(R.id.rv_button);
+                        ButtonAdapter buttonAdapter = new ButtonAdapter(HApplication.getApplication(),mActivity,vh);
+                        if (info.getBtn_align() == 1) {
+                            rv_button.setLayoutManager(new GridLayoutManager(HApplication.getApplication(), 2));
+                        }else {
+                            rv_button.setLayoutManager(new GridLayoutManager(HApplication.getApplication(), 1));
                         }
-                        button.setText(Html.fromHtml(btn.getBtn_text()));
-                        button.setTag(btn);
-
-                        button.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                mActivity.phoneType = "";
-
-                                if (btn.isAsk()) {
-                                    mActivity.showSureCancle(true);
-                                    mActivity.btn_sure.setOnClickListener(new View.OnClickListener() {
-                                        @Override
-                                        public void onClick(View v) {
-
-                                            mActivity.onMessageSend(btn.getBtn_text());
-
-
-                                        }
-                                    });
-                                    mActivity.btn_cancel.setOnClickListener(new View.OnClickListener() {
-                                        @Override
-                                        public void onClick(View v) {
-                                            mActivity.showSureCancle(false);
-
-                                        }
-                                    });
-                                } else {
-
-                                    mActivity.onMessageSend(((MessageBtn) v.getTag()).getBtn_text());
-                                }
-
-
-                            }
-                        });
-                        if (i == info.getList().size() - 1) {
-                            vh.mViewGroup.setPadding(0, 0, 0, 18);
-                        }
-                    }
+                        rv_button.setAdapter(buttonAdapter);
+                        buttonAdapter.setList(info.getList());
+//                        //final MessageBtn btn = info.getList().get(i);
+//                        if (!TextUtils.isEmpty(btn.getColor())) {
+//
+//                            button.setTextColor(Color.parseColor("#" + btn.getColor()));
+//                        }
+//                        button.setText(Html.fromHtml(btn.getBtn_text()));
+//                        button.setTag(btn);
+//
+//                        button.setOnClickListener(new View.OnClickListener() {
+//                            @Override
+//                            public void onClick(View v) {
+//                                mActivity.phoneType = "";
+//
+//                                if (btn.isAsk()) {
+//                                    mActivity.showSureCancle(true);
+//                                    mActivity.btn_sure.setOnClickListener(new View.OnClickListener() {
+//                                        @Override
+//                                        public void onClick(View v) {
+//
+//                                            mActivity.onMessageSend(btn.getBtn_text());
+//
+//
+//                                        }
+//                                    });
+//                                    mActivity.btn_cancel.setOnClickListener(new View.OnClickListener() {
+//                                        @Override
+//                                        public void onClick(View v) {
+//                                            mActivity.showSureCancle(false);
+//
+//                                        }
+//                                    });
+//                                } else {
+//
+//                                    mActivity.onMessageSend(((MessageBtn) v.getTag()).getBtn_text());
+//                                }
+//
+//
+//                            }
+//                        });
+//                        if (i == info.getList().size() - 1) {
+//                            vh.mViewGroup.setPadding(0, 0, 0, 18);
+//                        }
                     layoutParams = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
                     contentView.setLayoutParams(layoutParams);
                 } else {

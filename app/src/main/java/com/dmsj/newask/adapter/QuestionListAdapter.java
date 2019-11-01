@@ -38,43 +38,54 @@ public class QuestionListAdapter extends RecyclerView.Adapter<QuestionListAdapte
     }
 
     @Override
-    public QuestionListAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.item_checkbox_index, parent, false);
         return new ViewHolder(view);
     }
 
 
     @Override
-    public void onBindViewHolder(final QuestionListAdapter.ViewHolder holder, final int position) {
-        final CheckMoreInfo checkMoreInfo = list.get(position);
-        holder.ck_index.setText(checkMoreInfo.getMessage());
-        holder.ck_index.setChecked(checkMoreInfo.isCheck());
+    public void onBindViewHolder(final ViewHolder holder, final int position) {
+        holder.ck_index.setText(list.get(position).getMessage());
         holder.ck_index.setSelected(true);
-        holder.ck_index.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        holder.ck_index.setChecked(list.get(position).isCheck());
+        holder.ck_index.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onCheckedChanged(CompoundButton buttonView, final boolean isChecked) {
-                checkMoreInfo.setIsCheck(isChecked);
-                buttonView.post(new Runnable() {
-                    @Override
-                    public void run() {
-                        hideSound.onCheckbox_hideSound();
-                        // 这里写第一项与其他项互斥逻辑{
+            public void onClick(View view) {
 
+                hideSound.onCheckbox_hideSound();
+                // 这里写第一项与其他项互斥逻辑{
 
+                if (list.get(position).isCheck()) {
+                    list.get(position).setIsCheck(false);
 
-                        //}
-                        boolean isOpen = false;
+                } else{
+                    if (position == 0) {
                         for (int i = 0; i < list.size(); i++) {
-                            if (list.get(i).isCheck()) {
-                                isOpen = true;
-                                break;
-                            }
+                            list.get(i).setIsCheck(false);
                         }
-                        onCheckboxItem.onCheckboxItem(isOpen, checkMoreInfo.getMessage());
+                        list.get(position).setIsCheck(true);
+                    } else {
+                        list.get(position).setIsCheck(true);
+                        list.get(0).setIsCheck(false);
                     }
-                });
+                }
+
+
+                //}
+                boolean isOpen = false;
+                for (int i = 0; i < list.size(); i++) {
+                    if (list.get(i).isCheck()) {
+                        isOpen = true;
+                        break;
+                    }
+                }
+                onCheckboxItem.onCheckboxItem(isOpen, list.get(position).getMessage());
+                notifyDataSetChanged();
             }
         });
+
+
     }
 
     @Override

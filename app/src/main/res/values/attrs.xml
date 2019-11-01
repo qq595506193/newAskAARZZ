@@ -119,6 +119,7 @@
         <attr name="titleColor" format="color" />
         <attr name="inputColor" format="color" />
         <attr name="input_bg" format="color" />
+        <attr name="input_bg_white" format="color" />
         <attr name="chat_bottom_voice" format="reference" />
         <attr name="chat_bottom_send" format="reference" />
         <attr name="uninputColor" format="color" />
@@ -127,6 +128,7 @@
         <attr name="chat_speech_unselect" format="reference" />
         <attr name="rip_icon_center" format="reference" />
         <attr name="diandiandian" format="reference" />
+        <attr name="inputColor_black" format="reference" />
         <attr name="item_chat_l_light_bg" format="reference" />
         <attr name="item_chat_r_bg" format="reference" />
         <attr name="btn_bg" format="reference" />

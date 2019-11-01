@@ -4,6 +4,10 @@
     <item android:drawable="@drawable/doctor_card_bg_aqua" android:state_checked="false"></item>
     <!--不可点击时-->
     <item android:drawable="@drawable/doctor_card_bg_gray" android:state_enabled="false"></item>
+    <!--可点击-->
+    <item android:drawable="@drawable/doctor_card_bg_while" android:state_enabled="true"></item>
+
+
     <!--可以点击时-->
     <!--    <item android:state_enabled="true">-->
     <!--               -->

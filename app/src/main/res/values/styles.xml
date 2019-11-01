@@ -63,6 +63,7 @@
         <item name="titleColor">@color/title_color_green</item>
         <item name="rip_bg">@drawable/rip_bg_green</item>
         <item name="input_bg">@color/input_bg_green</item>
+        <item name="input_bg_white">@color/input_bg_white</item>
         <item name="inputColor">@color/input_color_green</item>
         <item name="chat_bottom_voice">@drawable/chat_bottom_voice_green</item>
         <item name="chat_bottom_send">@drawable/chat_bottom_send_green</item>
@@ -94,6 +95,7 @@
         <item name="titleColor">@color/title_color_aqua</item>
         <item name="rip_bg">@drawable/rip_bg_aqua</item>
         <item name="inputColor">@color/input_color_aqua</item>
+        <item name="inputColor_black">@color/black</item>
         <item name="input_bg">@color/input_bg_aqua</item>
         <item name="item_chat_l_light_bg">@drawable/item_chat_l_light_aqua_bg</item>
         <item name="chat_bottom_voice">@drawable/chat_bottom_voice_aqua</item>

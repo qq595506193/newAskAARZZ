@@ -93,6 +93,7 @@ public class DoctorMessageActivity extends Activity implements View.OnClickListe
         }
         String time = intent.getStringExtra("time");
         if (TextUtils.isEmpty(time)) {
+            tv_order.setBackgroundColor(Color.GRAY);
             tv_time.setText(Html.fromHtml("暂无出诊信息"));
         } else {
             String[] times = time.split("，");
@@ -111,6 +112,9 @@ public class DoctorMessageActivity extends Activity implements View.OnClickListe
             tv_time.setText(Html.fromHtml(str));
 
         }
+        if (ChatActivity.DoctorClass == null || TextUtils.isEmpty(WORK_NUMBER) || TextUtils.isEmpty(DEPT_CODE)) {
+            tv_order.setBackgroundColor(Color.GRAY);
+        }
 
     }
 
@@ -123,7 +127,7 @@ public class DoctorMessageActivity extends Activity implements View.OnClickListe
     public void onClick(View v) {
         if (v.getId() == R.id.tv_order) {
             if (ChatActivity.DoctorClass == null || TextUtils.isEmpty(WORK_NUMBER) || TextUtils.isEmpty(DEPT_CODE)) {
-                tv_order.setBackgroundColor(Color.GRAY);
+
                 Toast.makeText(this, "暂未开通!", Toast.LENGTH_SHORT).show();
             } else {
                 Intent intent = new Intent(this, ChatActivity.DoctorClass);

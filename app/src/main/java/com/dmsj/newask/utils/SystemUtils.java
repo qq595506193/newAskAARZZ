@@ -73,6 +73,7 @@ public class SystemUtils {
 //        Log.d("debug", "uuid=" + uniqueId);
 
         return uniqueId;
+//        return "00bfe0b200e54b6085883c9fb4d25ea3";
 //return Settings.Secure.getString(context.getContentResolver(), Settings.Secure.ANDROID_ID);
     }
 
